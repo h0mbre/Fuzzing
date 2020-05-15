@@ -19,6 +19,8 @@ def bit_flip(data):
 	num_of_flips = int(length * .01)
 
 	picked_indexes = []
+	
+	flip_array = [1,2,4,8,16,32,64,128]
 
 	counter = 0
 	while counter < num_of_flips:
@@ -27,7 +29,7 @@ def bit_flip(data):
 
 
 	for x in picked_indexes:
-		mask = random.choice(range(1,9))
+		mask = random.choice(flip_array)
 		data[x] = data[x] ^ mask
 
 	return data
@@ -138,7 +140,6 @@ else:
 		data = get_bytes(filename)
 		functions = [0, 1]
 		picked_function = random.choice(functions)
-		picked_function = 1
 		if picked_function == 0:
 			mutated = magic(data)
 			create_new(mutated)
